@@ -28,6 +28,55 @@
   </style>
 </head>
 <body style="margin:0; background:black;">
+<div class="cube">
+  <div class="face front">Front</div>
+  <div class="face back">Back</div>
+  <div class="face left">Left</div>
+  <div class="face right">Right</div>
+  <div class="face top">Top</div>
+  <div class="face bottom">Bottom</div>
+</div>
+
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+  perspective: 1000px;
+}
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin 6s infinite linear;
+  width: 200px;
+  height: 200px;
+}
+.face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid #0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #0ff;
+}
+.front  { transform: translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.right  { transform: rotateY(90deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.top    { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+@keyframes spin {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to   { transform: rotateX(360deg) rotateY(360deg); }
+}
+</style>
   <canvas id="three"></canvas>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
