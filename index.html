@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Scroll Animation</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      background: black;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="hero-canvas"></canvas>
+  <section>Welcome to My Portfolio 🚀</section>
+  <section>Projects</section>
+  <section>Contact</section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    const canvas = document.getElementById("hero-canvas");
+    const context = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const frameCount = 100;
+    const currentFrame = (index) =>
+      `images/frame_${index.toString().padStart(4, "0")}.jpg`;
+
+    const images = [];
+    const imageSeq = { frame: 0 };
+
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = currentFrame(i);
+      images.push(img);
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(imageSeq, {
+      frame: frameCount - 1,
+      snap: "frame",
+      ease: "none",
+      scrollTrigger: {
+        scrub: 1,
+        trigger: canvas,
+        start: "top top",
+        end: "400% top",
+        pin: true,
+      },
+      onUpdate: render,
+    });
+
+    images[0].onload = render;
+
+    function render() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      const img = images[imageSeq.frame];
+      if (img) {
+        const scale = Math.max(
+          canvas.width / img.width,
+          canvas.height / img.height
+        );
+        const x = canvas.width / 2 - (img.width / 2) * scale;
+        const y = canvas.height / 2 - (img.height / 2) * scale;
+        context.drawImage(
+          img,
+          0,
+          0,
+          img.width,
+          img.height,
+          x,
+          y,
+          img.width * scale,
+          img.height * scale
+        );
+      }
+    }
+  </script>
+</body>
+</html>
