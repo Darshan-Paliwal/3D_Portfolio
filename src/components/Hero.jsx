@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Typed from "react-typed";
+import { ReactTyped } from "react-typed";
 
 export default function Hero() {
   return (
@@ -26,6 +26,12 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
+<ReactTyped
+  strings={["Developer", "Designer", "Freelancer"]}
+  typeSpeed={40}
+  backSpeed={50}
+  loop
+/>
         <Typed
           strings={[
             "Web Developer 💻",
