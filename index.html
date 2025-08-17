@@ -121,13 +121,61 @@
   <!-- Contact Form -->
   <section id="contact">
     <h2>Start a Project</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="text" placeholder="Contact Number">
-      <textarea rows="5" placeholder="Describe your project..." required></textarea>
-      <button type="submit">Send Request</button>
-    </form>
+   <form id="contactForm">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <input type="text" name="contact" placeholder="Contact Number">
+  <input type="text" name="budget" placeholder="Your Budget">
+  <textarea name="project" rows="5" placeholder="Describe your project..." required></textarea>
+  <button type="submit">Send Request</button>
+</form>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    fetch("https://docs.google.com/spreadsheets/d/1NBL8btImht724FpHcFUcTkaaDk24-qAPPd_usiQz_BM/edit?usp=drivesdk", {   // Replace with Apps Script Web App URL
+      method: "POST",
+      body: new FormData(e.target)
+    })
+    .then(res => alert("✅ Your request has been submitted!"))
+    .catch(err => alert("❌ Error! Try again."));
+  });
+</script>
+
+<script>
+  function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = e.parameter;
+  
+  // Insert at top (latest first)
+  sheet.insertRowBefore(2); 
+  sheet.getRange(2, 1, 1, 5).setValues([[
+    new Date(),
+    data.name,
+    data.email,
+    data.contact,
+    data.budget,
+    data.project
+  ]]);
+  
+  // Send email notification
+  MailApp.sendEmail({
+    to: "darshanpaliwal.work@gmail.com",
+    subject: "🚀 New Client Form Submission",
+    htmlBody: `
+      <h3>New Client Request</h3>
+      <b>Name:</b> ${data.name}<br>
+      <b>Email:</b> ${data.email}<br>
+      <b>Contact:</b> ${data.contact}<br>
+      <b>Budget:</b> ${data.budget}<br>
+      <b>Project:</b> ${data.project}<br>
+      <br><i>Saved in Google Sheet.</i>
+    `
+  });
+
+  return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+}
+</script>
   </section>
 
   <!-- Scripts -->
