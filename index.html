@@ -1,54 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>My Portfolio</title>
   <style>
-    body,html {
-      margin:0;
-      padding:0;
-      height:100%;
-      width:100%;
-      overflow:hidden;
-      background:#000;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      overflow-x: hidden;
     }
-    #lottie {
-      position:fixed;
-      top:0;left:0;
-      width:100%;
-      height:100%;
-      z-index:-1;
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 2rem;
+      padding: 2rem;
     }
-    .content {
-      position:relative;
-      z-index:1;
-      color:white;
-      text-align:center;
-      top:40%;
-      font-family:sans-serif;
+    #hero { background: linear-gradient(135deg, #111, #222); }
+    #skills { background: linear-gradient(135deg, #1a1a40, #111); }
+    #projects { background: linear-gradient(135deg, #401a1a, #111); }
+    #contact { background: linear-gradient(135deg, #1a4034, #111); }
+    h1, h2 { margin-bottom: 1rem; }
+    .btn {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      background: #ff4d5a;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
     }
-    h1 span { color:#00bfff; }
+    .btn:hover { background: #ff1a33; }
   </style>
 </head>
 <body>
-  <div id="lottie"></div>
+  <!-- Section 1 -->
+  <section id="hero">
+    <img src="your-photo.jpg" alt="Me" width="150" style="border-radius:50%; margin-bottom:1rem;">
+    <h1>Hi, I'm Darshan</h1>
+    <p>I create modern, fast & interactive websites.</p>
+  </section>
 
-  <div class="content">
-    <h1>Hi, I'm <span>Darshan</span></h1>
-    <h2>Web Developer | Building modern web experiences</h2>
-  </div>
+  <!-- Section 2 -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <p>HTML, CSS, JavaScript, React, GSAP, Node.js</p>
+  </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <!-- Section 3 -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>🚀 Portfolio | 🛒 E-commerce | 📱 Mobile Apps</p>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="contact">
+    <h2>Connect With Me</h2>
+    <p>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a> |
+      <a href="https://github.com" target="_blank">GitHub</a> |
+      <a href="mailto:yourmail@gmail.com">Gmail</a>
+    </p>
+    <button class="btn" onclick="window.open('your-form-link','_blank')">Contact Form</button>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+
   <script>
-    lottie.loadAnimation({
-      container: document.getElementById('lottie'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: "https://assets9.lottiefiles.com/packages/lf20_mjlh3hcy.json" 
-      // replace with any Lottie animation URL
-    });
+    // Smooth Scroll with Lenis
+    const lenis = new Lenis()
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+
+    // GSAP Animations
+    gsap.from("#hero h1", {
+      opacity: 0, y: 50, duration: 1, delay: 0.3
+    })
+    gsap.from("#hero p", {
+      opacity: 0, y: 30, duration: 1, delay: 0.6
+    })
+
+    gsap.utils.toArray("section").forEach((sec, i) => {
+      gsap.from(sec.children, {
+        scrollTrigger: {
+          trigger: sec,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        },
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        duration: 1
+      })
+    })
   </script>
 </body>
 </html>
