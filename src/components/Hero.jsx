@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
+import Typed from "react-typed";
 
 export default function Hero() {
   return (
