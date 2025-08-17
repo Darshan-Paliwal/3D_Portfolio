@@ -21,6 +21,12 @@ export default function Hero() {
           loop
           className="text-xl md:text-3xl text-indigo-400"
         />
+<Typed
+  strings={["Developer", "Designer", "Freelancer"]}
+  typeSpeed={40}
+  backSpeed={50}
+  loop
+/>
       </motion.div>
     </section>
   );
