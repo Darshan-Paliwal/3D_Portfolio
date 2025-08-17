@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ReactTyped } from "react-typed";
 import Typed from "react-typed";
 
 export default function Hero() {
@@ -15,19 +14,13 @@ export default function Hero() {
           Hi, I am Darshan 👋
         </h1>
 
-        <ReactTyped
+        <Typed
           strings={["Web Developer", "Freelancer", "Tech Enthusiast"]}
           typeSpeed={50}
           backSpeed={30}
           loop
           className="text-xl md:text-3xl text-indigo-400"
         />
-<Typed
-  strings={["Developer", "Designer", "Freelancer"]}
-  typeSpeed={40}
-  backSpeed={50}
-  loop
-/>
       </motion.div>
     </section>
   );
