@@ -3,141 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Darshan Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #0b0e14;
-      color: white;
-      line-height: 1.6;
-    }
-
-    header, section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      margin-bottom: 1rem;
-    }
-    p {
-      max-width: 700px;
-      margin-bottom: 2rem;
-      color: #aaa;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.8rem 1.5rem;
-      background: #63e6be;
-      color: #000;
-      font-weight: bold;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      background: #4cd3aa;
-    }
-
-    /* 3D Model Embed */
-    .model-wrapper {
-      width: 100%;
-      max-width: 800px;
-      aspect-ratio: 16/9;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,.5);
-      margin-bottom: 2rem;
-    }
-    .model-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* Section Styles */
-    #about { background: #111827; }
-    #projects { background: #1f2937; }
-    #contact { background: #111827; }
-  </style>
+  <title>My 3D Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Hero -->
-  <header id="hero">
-    <h1 class="animate-text">Hi, I’m Darshan</h1>
-    <p class="animate-text">I create modern websites with 3D, animations, and interactivity.</p>
-
-    <div class="model-wrapper">
-      <iframe 
-        title="3D Character"
-        src="https://sketchfab.com/models/ae121bd92123400ebe792312ca6ec1af/embed"
-        allow="autoplay; fullscreen; xr-spatial-tracking"
-        mozallowfullscreen="true"
-        webkitallowfullscreen="true">
-      </iframe>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Darshan</span></h1>
+      <p>Web Developer | Building modern web experiences</p>
     </div>
 
-    <a href="#projects" class="btn animate-text">See My Work</a>
-  </header>
-
-  <!-- About -->
-  <section id="about">
-    <h2 class="animate-text">About Me</h2>
-    <p class="animate-text">
-      I’m a frontend developer passionate about building interactive experiences using 
-      React, Three.js, and modern animations.
-    </p>
+    <!-- 3D Character from Sketchfab -->
+    <div class="hero-3d">
+      <iframe 
+        title="3D Character" 
+        frameborder="0"
+        allowfullscreen 
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true" 
+        allow="autoplay; fullscreen; xr-spatial-tracking" 
+        src="https://sketchfab.com/models/ae121bd92123400ebe792312ca6ec1af/embed"
+      >
+      </iframe>
+    </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2 class="animate-text">Projects</h2>
-    <p class="animate-text">
-      Here are some of my works — websites, landing pages, and apps with sleek animations and 3D.
-    </p>
+  <!-- About Section -->
+  <section class="about">
+    <h2>About Me</h2>
+    <p>I create responsive websites and animations with HTML, CSS, JS and React.</p>
   </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2 class="animate-text">Contact Me</h2>
-    <p class="animate-text">
-      Let’s build something amazing together! Reach out via email: <b>your@email.com</b>
-    </p>
-  </section>
-
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from(".animate-text", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: ".animate-text",
-        start: "top 80%"
-      }
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
