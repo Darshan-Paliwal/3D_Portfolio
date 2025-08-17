@@ -19,7 +19,6 @@ export default function Hero() {
           typeSpeed={50}
           backSpeed={30}
           loop
-          className="text-xl md:text-3xl text-indigo-400"
         />
       </motion.div>
     </section>
