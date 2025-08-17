@@ -26,12 +26,6 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-<ReactTyped
-  strings={["Developer", "Designer", "Freelancer"]}
-  typeSpeed={40}
-  backSpeed={50}
-  loop
-/>
         <Typed
           strings={[
             "Web Developer 💻",
