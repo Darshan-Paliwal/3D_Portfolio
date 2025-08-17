@@ -1,9 +1,7 @@
-import Hero from "./components/Hero";
-
 export default function App() {
   return (
-    <div className="font-sans">
-      <Hero />
-    </div>
+    <h1 className="text-4xl font-bold text-red-500">
+      🚀 TESTING DEPLOYMENT
+    </h1>
   );
 }
