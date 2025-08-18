@@ -77,7 +77,7 @@ function Projects() {
       <motion.div
         ref={containerRef}
         className="project-container flex space-x-2 md:space-x-4 pb-4"
-        style={{ width: '100vw', overflowX: 'auto' }} // Set to 100vw for full viewport width
+        style={{ width: '100%', maxWidth: '100vw', overflowX: 'auto' }} // Adjusted to prevent horizontal overflow
       >
         {projects.map((project, index) => (
           <motion.div
