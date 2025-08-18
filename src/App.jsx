@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div ref={containerRef} className="snap-container min-h-screen relative">
-      {/* Moving Particles */}
+      {/* Restored Moving Particles */}
       <div className="particle small particle-1"></div>
       <div className="particle medium particle-2"></div>
       <div className="particle large particle-3"></div>
@@ -27,7 +27,7 @@ function App() {
       <div className="particle small particle-5"></div>
       <div className="particle large particle-6"></div>
 
-      {/* Moving Texts */}
+      {/* Restored Moving Texts */}
       <div className="moving-text moving-text-1">Explore My Work ✦</div>
       <div className="moving-text moving-text-2">Get in Touch ✧</div>
 
