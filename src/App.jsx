@@ -34,28 +34,28 @@ function App() {
       <Header />
       <motion.section
         id="hero"
-        className="section"
+        className="section pt-20" // Offset for header
         style={{ opacity: opacityTransform(0, 0.25) }}
       >
         <Hero />
       </motion.section>
       <motion.section
         id="about"
-        className="section"
+        className="section pt-20"
         style={{ opacity: opacityTransform(0.25, 0.5) }}
       >
         <About scrollToContact={scrollToContact} />
       </motion.section>
       <motion.section
         id="projects"
-        className="section"
+        className="section pt-20"
         style={{ opacity: opacityTransform(0.5, 0.75) }}
       >
         <Projects />
       </motion.section>
       <motion.section
         id="contact"
-        className="section"
+        className="section pt-20"
         style={{ opacity: opacityTransform(0.75, 1) }}
         ref={contactRef}
       >
