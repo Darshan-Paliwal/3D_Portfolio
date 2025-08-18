@@ -1,10 +1,8 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
 function Projects() {
   const containerRef = useRef(null);
-  const { scrollXProgress } = useScroll({ container: containerRef });
-  const opacityTransform = useTransform(scrollXProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   const projects = [
     {
@@ -35,6 +33,11 @@ function Projects() {
     }
   };
 
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  };
+
   return (
     <div className="max-w-7xl mx-auto p-4 md:p-8 w-full h-full flex flex-col justify-center relative">
       <motion.h2
@@ -46,19 +49,21 @@ function Projects() {
         My Projects
       </motion.h2>
       <div className="relative">
-        <div className="fade-edge fade-left"></div>
-        <div className="fade-edge fade-right"></div>
-        <motion.div
+        <div className="fade-edge fade-left h-full"></div>
+        <div className="fade-edge fade-right h-full"></div>
+        <div
           ref={containerRef}
-          className="project-container flex overflow-x-auto space-x-4 md:space-x-6 pb-4 scrollbar-hide"
-          style={{ opacity: opacityTransform }}
+          className="project-container flex overflow-x-auto space-x-4 md:space-x-6 pb-4 scrollbar-hide snap-x snap-mandatory"
         >
           {projects.map((project, index) => (
             <motion.div
               key={index}
               className="min-w-[90vw] md:min-w-[40vw] lg:min-w-[30vw] glass p-6 rounded-lg project-card flex flex-col justify-between"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
               whileHover={{ scale: 1.05, boxShadow: '0 12px 24px rgba(0, 0, 0, 0.3)' }}
-              transition={{ duration: 0.3 }}
             >
               <img
                 src={project.image}
@@ -79,7 +84,7 @@ function Projects() {
               </ul>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
       <div className="flex justify-center mt-4 gap-4 hidden md:flex">
         <button
