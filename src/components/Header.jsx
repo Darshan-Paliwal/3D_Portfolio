@@ -6,7 +6,7 @@ function Header() {
 
   const scrollToSection = (id) => {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    if (window.innerWidth <= 768) setIsMenuOpen(false);
+    if (window.innerWidth <= 768) setIsMenuOpen(false); // Close menu on mobile after click
   };
 
   return (
@@ -21,14 +21,15 @@ function Header() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
         onClick={() => scrollToSection('hero')}
-        className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary cursor-pointer text-shadow-[0_0_15px_rgba(0,255,255,0.5)]" // Added glow
+        className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary cursor-pointer text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"
       >
         My Portfolio
       </motion.h1>
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-2xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]" // Added glow
+          className="text-2xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+          aria-label="Toggle menu"
         >
           ☰
         </button>
@@ -43,7 +44,7 @@ function Header() {
           <li key={section}>
             <button
               onClick={() => scrollToSection(section)}
-              className="text-sm md:text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 text-shadow-[0_0_8px_rgba(0,255,255,0.2)]" // Added glow
+              className="text-sm md:text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 text-shadow-[0_0_8px_rgba(0,255,255,0.2)]"
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </button>
@@ -55,13 +56,14 @@ function Header() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="md:hidden menu-glass mt-2 p-4 rounded-md absolute top-full right-4 w-48"
+          className="md:hidden menu-glass mt-2 p-4 rounded-md absolute top-full right-4 w-48 z-50" // Added z-50 for layering
+          style={{ background: 'rgba(255, 255, 255, 0.05)' }} // Ensure visibility
         >
           {['hero', 'about', 'projects', 'contact'].map((section) => (
             <li key={section} className="mb-2 last:mb-0">
               <button
                 onClick={() => scrollToSection(section)}
-                className="text-base w-full text-left hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 text-shadow-[0_0_8px_rgba(0,255,255,0.2)]" // Added glow
+                className="text-base w-full text-left hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 text-shadow-[0_0_8px_rgba(0,255,255,0.2)]"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
