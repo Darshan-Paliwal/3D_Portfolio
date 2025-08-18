@@ -68,11 +68,11 @@ function Projects() {
       >
         My Projects
       </motion.h2>
-      <div className="relative overflow-hidden">
+      <div className="w-full overflow-hidden">
         <motion.div
           ref={containerRef}
           className="project-container flex space-x-4 md:space-x-6 pb-4"
-          style={{ opacity: opacityTransform }}
+          style={{ width: '100vw', opacity: opacityTransform }}
         >
           {projects.map((project, index) => (
             <motion.div
