@@ -76,7 +76,7 @@ function Projects() {
       <motion.div
         ref={containerRef}
         className="project-container flex space-x-2 md:space-x-4 pb-4"
-        style={{ width: '100vw', opacity: opacityTransform }}
+        style={{ width: '100%', maxWidth: '100vw', overflowX: 'auto' }}
       >
         {projects.map((project, index) => (
           <motion.div
