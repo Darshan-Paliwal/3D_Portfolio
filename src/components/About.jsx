@@ -1,4 +1,3 @@
-import { motion } from 'framer-variants';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
