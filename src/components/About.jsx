@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 function About({ scrollToContact }) {
   return (
@@ -12,7 +12,9 @@ function About({ scrollToContact }) {
       >
         About Me
       </motion.h2>
+
       <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+        {/* Left side - Connect */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,6 +24,7 @@ function About({ scrollToContact }) {
           <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600">
             Connect with Me
           </h3>
+
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={scrollToContact}
@@ -37,11 +40,12 @@ function About({ scrollToContact }) {
               Download CV
             </a>
           </div>
+
           <div className="flex justify-center space-x-4 mt-6">
             {[
-              { Icon: FaGithub, url: 'https://github.com' },
-              { Icon: FaLinkedin, url: 'https://linkedin.com' },
-              { Icon: FaTwitter, url: 'https://twitter.com' },
+              { Icon: FaGithub, url: "https://github.com" },
+              { Icon: FaLinkedin, url: "https://linkedin.com" },
+              { Icon: FaTwitter, url: "https://twitter.com" },
             ].map(({ Icon, url }, index) => (
               <motion.a
                 key={index}
@@ -56,7 +60,10 @@ function About({ scrollToContact }) {
             ))}
           </div>
         </motion.div>
+
         <div className="separator md:hidden"></div>
+
+        {/* Right side - Skills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,15 +73,23 @@ function About({ scrollToContact }) {
           <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-600">
             Skills
           </h3>
+
           <ul className="flex flex-wrap gap-3 justify-center">
-            {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill, index) => (
+            {[
+              "React",
+              "Tailwind CSS",
+              "Node.js",
+              "Framer Motion",
+              "JavaScript",
+              "Git",
+            ].map((skill) => (
               <motion.li
                 key={skill}
                 className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm shadow-md"
                 whileHover={{ scale: 1.1 }}
               >
                 {skill}
-              </li>
+              </motion.li> // ✅ correctly closed as </motion.li>
             ))}
           </ul>
         </motion.div>
