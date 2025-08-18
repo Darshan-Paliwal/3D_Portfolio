@@ -8,7 +8,7 @@ function About({ scrollToContact }) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600" // Changed gradient
+        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600"
       >
         About Me
       </motion.h2>
@@ -19,8 +19,7 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600" // Changed gradient
-          >
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-600">
             Connect with Me
           </h3>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
@@ -64,8 +63,7 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-600" // Changed gradient
-          >
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-600">
             Skills
           </h3>
           <ul className="flex flex-wrap gap-3 justify-center">
