@@ -19,7 +19,7 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4">Connect with Me</h3>
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Connect with Me</h3>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={scrollToContact}
@@ -54,13 +54,14 @@ function About({ scrollToContact }) {
             ))}
           </div>
         </motion.div>
+        <div className="separator md:hidden"></div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4">Skills</h3>
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Skills</h3>
           <ul className="flex flex-wrap gap-3 justify-center">
             {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill, index) => (
               <motion.li
