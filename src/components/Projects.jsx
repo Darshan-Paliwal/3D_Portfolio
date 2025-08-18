@@ -49,8 +49,6 @@ function Projects() {
         My Projects
       </motion.h2>
       <div className="relative">
-        <div className="fade-edge fade-left h-full"></div>
-        <div className="fade-edge fade-right h-full"></div>
         <div
           ref={containerRef}
           className="project-container flex overflow-x-auto space-x-4 md:space-x-6 pb-4 scrollbar-hide snap-x snap-mandatory"
