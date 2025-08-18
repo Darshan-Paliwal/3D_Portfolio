@@ -65,7 +65,7 @@ function Projects() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto p-4 md:p-8 w-full h-full flex flex-col justify-center">
+    <div className="max-w-7xl mx-auto p-0 md:p-8 w-full h-full flex flex-col justify-center" style={{ marginLeft: 0 }}>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ function Projects() {
       <motion.div
         ref={containerRef}
         className="project-container flex space-x-2 md:space-x-4 pb-4"
-        style={{ width: '100%', maxWidth: '100vw', overflowX: 'auto' }} // Adjusted to prevent horizontal overflow
+        style={{ width: '100%', maxWidth: '100vw', overflowX: 'auto', marginLeft: 0, paddingLeft: 0 }}
       >
         {projects.map((project, index) => (
           <motion.div
@@ -91,7 +91,7 @@ function Projects() {
             }
             whileHover={{ scale: 1.05, boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)' }}
             transition={{ type: 'spring', stiffness: 150, damping: 12, duration: 0.6 }}
-            style={{ overflow: 'hidden' }}
+            style={{ overflow: 'hidden', marginLeft: 0, paddingLeft: 0 }}
           >
             <img
               src={project.image}
