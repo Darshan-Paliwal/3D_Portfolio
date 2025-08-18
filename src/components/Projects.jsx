@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 function Projects() {
   const containerRef = useRef(null);
   const { scrollXProgress } = useScroll({ container: containerRef });
-  const opacityTransform = useTransform(scrollXProgress, [0, 0.1, 0.9, 1], [0.3, 1, 1, 0.3]);
+  const opacityTransform = useTransform(scrollXProgress, [0, 0.2, 0.8, 1], [0.7, 1, 1, 0.7]);
 
   const projects = [
     {
@@ -68,7 +68,7 @@ function Projects() {
       >
         My Projects
       </motion.h2>
-      <div className="w-full overflow-hidden">
+      <div className="w-full">
         <motion.div
           ref={containerRef}
           className="project-container flex space-x-4 md:space-x-6 pb-4"
