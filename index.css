@@ -15,7 +15,7 @@ body {
   overflow-y: auto; /* Allow vertical scrolling */
 }
 
-html::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
 }
 
