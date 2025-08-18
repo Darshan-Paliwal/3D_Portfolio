@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,56 +8,43 @@ import Contact from './components/Contact';
 
 function App() {
   const contactRef = useRef(null);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({ container: containerRef });
 
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
-  };
+  const opacityTransform = (start, end) => useTransform(scrollYProgress, [start - 0.2, start, end, end + 0.2], [0, 1, 1, 0]);
 
   const scrollToContact = () => {
     contactRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen">
+    <div ref={containerRef} className="snap-container min-h-screen">
       <Header />
       <motion.section
         id="hero"
         className="section"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        style={{ opacity: opacityTransform(0, 0.25) }}
       >
         <Hero />
       </motion.section>
       <motion.section
         id="about"
         className="section"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        style={{ opacity: opacityTransform(0.25, 0.5) }}
       >
         <About scrollToContact={scrollToContact} />
       </motion.section>
       <motion.section
         id="projects"
         className="section"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        style={{ opacity: opacityTransform(0.5, 0.75) }}
       >
         <Projects />
       </motion.section>
       <motion.section
         id="contact"
         className="section"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        style={{ opacity: opacityTransform(0.75, 1) }}
         ref={contactRef}
       >
         <Contact />
