@@ -4,6 +4,8 @@
 
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -11,21 +13,23 @@ body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #ffffff;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  overflow-y: scroll; /* Enable vertical scrolling */
-  padding: 0; /* Remove any default padding causing overflow */
-  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+  display: none;
 }
 
 .snap-container {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .section {
@@ -33,7 +37,7 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 0 2rem 0; /* Removed left padding to fix leafy side */
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
@@ -53,6 +57,8 @@ body::-webkit-scrollbar {
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .project-container::-webkit-scrollbar {
