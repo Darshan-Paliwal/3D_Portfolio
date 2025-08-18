@@ -53,21 +53,22 @@ body {
 
 .project-card {
   flex: 0 0 auto;
-  width: 80vw;
-  max-width: 400px;
-  margin: 0 10px;
+  width: 70vw;
+  max-width: 350px;
+  margin: 0 5px;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card.active {
-  transform: scale(1.1);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(1.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   z-index: 10;
 }
 
 .project-card.inactive {
+  transform: scale(0.95);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -81,6 +82,22 @@ body {
 
 .separator {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(to right, transformant, rgba(255, 255, 255, 0.3), transparent);
   margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .project-card {
+    width: 40vw;
+    max-width: 400px;
+    margin: 0 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-card {
+    width: 30vw;
+    max-width: 450px;
+    margin: 0 15px;
+  }
 }
