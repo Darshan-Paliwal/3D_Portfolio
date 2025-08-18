@@ -3,55 +3,78 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 function About({ scrollToContact }) {
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
+    <div className="max-w-7xl mx-auto p-4 md:p-8 text-center glass">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-6xl mx-auto p-8 text-center"
+        transition={{ duration: 0.6 }}
+        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="md:w-1/2">
-            <h3 className="text-xl font-semibold mb-4">Connect with Me</h3>
+        About Me
+      </motion.h2>
+      <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="md:w-1/2"
+        >
+          <h3 className="text-lg md:text-xl font-semibold mb-4">Connect with Me</h3>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={scrollToContact}
-              className="bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
+              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all"
             >
               Connect Now
             </button>
             <a
               href="/path-to-your-cv.pdf"
               download
-              className="ml-4 bg-secondary text-white px-6 py-2 rounded-full hover:bg-green-700 transition"
+              className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all"
             >
               Download CV
             </a>
-            <div className="flex justify-center space-x-4 mt-6">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <FaGithub className="text-2xl hover:text-primary" />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin className="text-2xl hover:text-primary" />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <FaTwitter className="text-2xl hover:text-primary" />
-              </a>
-            </div>
           </div>
-          <div className="md:w-1/2">
-            <h3 className="text-xl font-semibold mb-4">Skills</h3>
-            <ul className="flex flex-wrap gap-4 justify-center">
-              {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill) => (
-                <li key={skill} className="bg-gray-800 px-4 py-2 rounded-full">
-                  {skill}
-                </li>
-              ))}
-            </ul>
+          <div className="flex justify-center space-x-4 mt-6">
+            {[
+              { Icon: FaGithub, url: 'https://github.com' },
+              { Icon: FaLinkedin, url: 'https://linkedin.com' },
+              { Icon: FaTwitter, url: 'https://twitter.com' },
+            ].map(({ Icon, url }, index) => (
+              <motion.a
+                key={index}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="text-2xl hover:text-primary transition"
+              >
+                <Icon />
+              </motion.a>
+            ))}
           </div>
-        </div>
-      </motion.div>
-    </section>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="md:w-1/2"
+        >
+          <h3 className="text-lg md:text-xl font-semibold mb-4">Skills</h3>
+          <ul className="flex flex-wrap gap-3 justify-center">
+            {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill, index) => (
+              <motion.li
+                key={skill}
+                className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm shadow-md"
+                whileHover={{ scale: 1.1 }}
+              >
+                {skill}
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </div>
   );
 }
 
