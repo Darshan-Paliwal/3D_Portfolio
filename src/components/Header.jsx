@@ -27,16 +27,12 @@ function Header() {
             ☰
           </button>
         </div>
-        <ul
-          className={`${
-            isMenuOpen ? 'block' : 'hidden'
-          } md:flex space-x-4 md:space-x-6 mt-2 md:mt-0 md:space-y-0 space-y-2 absolute md:static top-12 right-4 bg-gray-800 p-4 rounded-md md:bg-transparent`}
-        >
+        <ul className="hidden md:flex space-x-4 md:space-x-6 mt-2 md:mt-0">
           {['hero', 'about', 'projects', 'contact'].map((section) => (
             <li key={section}>
               <button
                 onClick={() => scrollToSection(section)}
-                className="text-sm md:text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 block"
+                className="text-sm md:text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
@@ -44,6 +40,24 @@ function Header() {
           ))}
         </ul>
       </div>
+      {isMenuOpen && (
+        <motion.ul
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden menu-glass mt-4 space-y-2 p-4 rounded-md"
+        >
+          {['hero', 'about', 'projects', 'contact'].map((section) => (
+            <li key={section}>
+              <button
+                onClick={() => scrollToSection(section)}
+                className="text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 block w-full text-left"
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </button>
+            </li>
+          ))}
+        </motion.ul>
+      )}
     </motion.nav>
   );
 }
