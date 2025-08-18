@@ -11,19 +11,9 @@ body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #ffffff;
-  overflow-x: hidden;  /* ❌ No horizontal scrollbar for whole site */
-  overflow-y: scroll;  /* ✅ Allow vertical scrolling */
-}
-
-/* Hide vertical scrollbar but still scroll */
-body::-webkit-scrollbar {
-  width: 0px;   /* Chrome, Safari */
-  background: transparent;
-}
-
-body {
-  -ms-overflow-style: none;  /* IE + Edge */
-  scrollbar-width: none;     /* Firefox */
+  overflow-x: hidden; /* Ensure no horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scrolling */
+  padding: 0; /* Remove any default padding causing overflow */
 }
 
 .snap-container {
@@ -50,23 +40,18 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-/* Project container – horizontal scroll only here */
 .project-container {
   display: flex;
-  overflow-x: auto;           /* ✅ Horizontal scroll only in project section */
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  -ms-overflow-style: none;   /* hide scrollbar IE/Edge */
-  scrollbar-width: none;      /* hide scrollbar Firefox */
-  width: 100%;
-  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Hide scrollbar for project container */
 .project-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
 }
-
 
 .project-card {
   flex: 0 0 auto;
