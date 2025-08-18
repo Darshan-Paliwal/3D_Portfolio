@@ -74,7 +74,7 @@ function About({ scrollToContact }) {
                 whileHover={{ scale: 1.1 }}
               >
                 {skill}
-              </li>
+              </motion.li>
             ))}
           </ul>
         </motion.div>
