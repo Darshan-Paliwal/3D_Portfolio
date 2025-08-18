@@ -18,7 +18,13 @@ function App() {
   };
 
   return (
-    <div ref={containerRef} className="snap-container min-h-screen">
+    <div ref={containerRef} className="snap-container min-h-screen relative">
+      {/* Moving Particles */}
+      <div className="particle particle-1"></div>
+      <div className="particle particle-2"></div>
+      <div className="particle particle-3"></div>
+      <div className="particle particle-4"></div>
+
       <Header />
       <motion.section
         id="hero"
