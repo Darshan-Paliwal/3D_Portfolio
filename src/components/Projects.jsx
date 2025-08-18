@@ -70,7 +70,7 @@ function Projects() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_20px_rgba(0,255,255,0.6)]" // Enhanced glow
+        className="text-2xl md:text-4xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_20px_rgba(0,255,255,0.6)]"
       >
         My Projects
       </motion.h2>
@@ -86,10 +86,10 @@ function Projects() {
             initial={{ scale: 0.95, opacity: 0.9 }}
             animate={
               document.querySelector('.project-card.active') === this
-                ? { scale: 1.15, boxShadow: 'none', textShadow: '0 0 25px rgba(0,255,255,0.7)' } // Replaced shadow with glow
-                : { scale: 0.95, boxShadow: 'none', textShadow: '0 0 10px rgba(0,255,255,0.3)' } // Replaced shadow with glow
+                ? { scale: 1.15, boxShadow: 'none', textShadow: '0 0 25px rgba(0,255,255,0.7)' }
+                : { scale: 0.95, boxShadow: 'none', textShadow: '0 0 10px rgba(0,255,255,0.3)' }
             }
-            whileHover={{ scale: 1.05, textShadow: '0 0 30px rgba(0,255,255,0.8)' }} // Enhanced hover glow
+            whileHover={{ scale: 1.05, textShadow: '0 0 30px rgba(0,255,255,0.8)' }}
             transition={{ type: 'spring', stiffness: 150, damping: 12, duration: 0.6 }}
             style={{ overflow: 'hidden' }}
           >
@@ -98,7 +98,9 @@ function Projects() {
               alt={project.title}
               className="w-full h-40 md:h-48 lg:h-56 object-cover rounded-t-lg"
             />
-            <h3 className="text-lg md:text-xl font-semibold mb-2 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"> <!-- Added glow -->
+            <h3
+              className="text-lg md:text-xl font-semibold mb-2 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]" {/* Replaced comment */}
+            >
               {project.title}
             </h3>
             <p className="text-gray-300 text-sm md:text-base mb-4 flex-grow line-clamp-3">{project.description}</p>
@@ -106,7 +108,7 @@ function Projects() {
               {project.skills.map((skill) => (
                 <li
                   key={skill}
-                  className="bg-gradient-to-r from-primary to-secondary px-2 md:px-3 py-1 rounded-full text-xs md:text-sm text-shadow-[0_0_8px_rgba(0,255,255,0.2)]" // Added glow
+                  className="bg-gradient-to-r from-primary to-secondary px-2 md:px-3 py-1 rounded-full text-xs md:text-sm text-shadow-[0_0_8px_rgba(0,255,255,0.2)]"
                 >
                   {skill}
                 </li>
@@ -116,7 +118,7 @@ function Projects() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all" // Added glow
+              className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all"
             >
               Visit Project
             </a>
@@ -126,13 +128,13 @@ function Projects() {
       <div className="flex justify-center mt-4 gap-4 hidden md:flex">
         <button
           onClick={() => scroll('left')}
-          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all" // Added glow
+          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all"
         >
           ←
         </button>
         <button
           onClick={() => scroll('right')}
-          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all" // Added glow
+          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all"
         >
           →
         </button>
