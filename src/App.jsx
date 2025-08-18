@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,31 +9,59 @@ import Contact from './components/Contact';
 function App() {
   const contactRef = useRef(null);
 
-  const { scrollYProgress } = useScroll();
-  const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [1, 0.5, 0.3, 0.2, 0.1]);
-  const opacity2 = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0.1, 1, 0.5, 0.3, 0.2]);
-  const opacity3 = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0.1, 0.2, 1, 0.5, 0.3]);
-  const opacity4 = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0.1, 0.2, 0.3, 1, 0.5]);
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+  };
 
   const scrollToContact = () => {
     contactRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen">
       <Header />
-      <motion.div style={{ opacity: opacity1 }} className="min-h-screen">
+      <motion.section
+        id="hero"
+        className="section"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
         <Hero />
-      </motion.div>
-      <motion.div style={{ opacity: opacity2 }} className="min-h-screen">
+      </motion.section>
+      <motion.section
+        id="about"
+        className="section"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
         <About scrollToContact={scrollToContact} />
-      </motion.div>
-      <motion.div style={{ opacity: opacity3 }} className="min-h-screen">
+      </motion.section>
+      <motion.section
+        id="projects"
+        className="section"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
         <Projects />
-      </motion.div>
-      <motion.div ref={contactRef} style={{ opacity: opacity4 }} className="min-h-screen">
+      </motion.section>
+      <motion.section
+        id="contact"
+        className="section"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        ref={contactRef}
+      >
         <Contact />
-      </motion.div>
+      </motion.section>
     </div>
   );
 }
