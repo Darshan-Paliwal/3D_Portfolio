@@ -15,6 +15,10 @@ body {
   overflow-y: auto; /* Allow vertical scrolling */
 }
 
+html::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+}
+
 .snap-container {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
@@ -45,7 +49,12 @@ body {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  scrollbar-width: none;    /* Hide scrollbar in Firefox */
+
+  width: 100vw;       /* Always full device width */
+  min-width: 100vw;   /* Prevent shrinking smaller than viewport */
+  height: 100%;       /* Adjust to fit content/parent height */
+  box-sizing: border-box;
 }
 
 .project-container::-webkit-scrollbar {
