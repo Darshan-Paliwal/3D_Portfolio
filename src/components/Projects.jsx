@@ -23,7 +23,7 @@ function Projects() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto p-4 md:p-8">
+    <div className="max-w-7xl mx-auto p-4 md:p-8 w-full h-full flex flex-col justify-center">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -33,15 +33,16 @@ function Projects() {
         My Projects
       </motion.h2>
       <motion.div
-        className="flex overflow-x-auto space-x-4 md:space-x-6 pb-4 snap-x snap-mandatory"
+        className="flex overflow-x-auto space-x-4 md:space-x-6 pb-4 snap-x snap-mandatory scrollbar-hide"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="min-w-[280px] md:min-w-[320px] glass p-6 rounded-lg snap-center"
+            className="min-w-[90vw] md:min-w-[40vw] lg:min-w-[30vw] glass p-6 rounded-lg snap-center flex flex-col justify-between"
             whileHover={{ scale: 1.05, boxShadow: '0 12px 24px rgba(0, 0, 0, 0.3)' }}
             transition={{ duration: 0.3 }}
           >
@@ -51,7 +52,7 @@ function Projects() {
               className="w-full h-40 md:h-48 object-cover rounded-md mb-4 shadow-md"
             />
             <h3 className="text-lg md:text-xl font-semibold mb-2">{project.title}</h3>
-            <p className="text-gray-300 text-sm md:text-base mb-4">{project.description}</p>
+            <p className="text-gray-300 text-sm md:text-base mb-4 flex-grow">{project.description}</p>
             <ul className="flex flex-wrap gap-2">
               {project.skills.map((skill) => (
                 <li
