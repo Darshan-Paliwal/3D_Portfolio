@@ -86,4 +86,57 @@ function Projects() {
             initial={{ scale: 0.95, opacity: 0.9 }}
             animate={
               document.querySelector('.project-card.active') === this
-                ? { scale: 1.15, boxShadow: '
+                ? { scale: 1.15, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }
+                : { scale: 0.95, boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)' }
+            }
+            whileHover={{ scale: 1.05, boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)' }}
+            transition={{ type: 'spring', stiffness: 150, damping: 12, duration: 0.6 }}
+            style={{ overflow: 'hidden' }}
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-40 md:h-48 lg:h-56 object-cover rounded-t-lg mb-4 shadow-md"
+            />
+            <h3 className="text-lg md:text-xl font-semibold mb-2">{project.title}</h3>
+            <p className="text-gray-300 text-sm md:text-base mb-4 flex-grow line-clamp-3">{project.description}</p>
+            <ul className="flex flex-wrap gap-2 mb-4">
+              {project.skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="bg-gradient-to-r from-primary to-secondary px-2 md:px-3 py-1 rounded-full text-xs md:text-sm shadow-sm"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center hover:shadow-lg transition-all"
+            >
+              Visit Project
+            </a>
+          </motion.div>
+        ))}
+      </motion.div>
+      <div className="flex justify-center mt-4 gap-4 hidden md:flex">
+        <button
+          onClick={() => scroll('left')}
+          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full hover:shadow-lg transition-all"
+        >
+          ←
+        </button>
+        <button
+          onClick={() => scroll('right')}
+          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full hover:shadow-lg transition-all"
+        >
+          →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Projects;
