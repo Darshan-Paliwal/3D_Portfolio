@@ -34,7 +34,7 @@ function App() {
       <Header />
       <motion.section
         id="hero"
-        className="section pt-20" // Offset for header
+        className="section pt-20"
         style={{ opacity: opacityTransform(0, 0.25) }}
       >
         <Hero />
