@@ -5,8 +5,17 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (id) => {
+    console.log(`Scrolling to ${id}`); // Debug log
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    if (window.innerWidth <= 768) setIsMenuOpen(false); // Close menu on mobile after click
+    if (window.innerWidth <= 768) {
+      console.log('Closing menu on mobile'); // Debug log
+      setIsMenuOpen(false);
+    }
+  };
+
+  const handleMenuToggle = () => {
+    console.log('Toggling menu, isMenuOpen:', !isMenuOpen); // Debug log
+    setIsMenuOpen((prev) => !prev);
   };
 
   return (
@@ -25,9 +34,9 @@ function Header() {
       >
         My Portfolio
       </motion.h1>
-      <div className="md:hidden">
+      <div className="md:hidden relative">
         <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={handleMenuToggle}
           className="text-2xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
           aria-label="Toggle menu"
         >
@@ -56,8 +65,9 @@ function Header() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="md:hidden menu-glass mt-2 p-4 rounded-md absolute top-full right-4 w-48 z-50" // Added z-50 for layering
-          style={{ background: 'rgba(255, 255, 255, 0.05)' }} // Ensure visibility
+          transition={{ duration: 0.2 }}
+          className="md:hidden menu-glass p-4 rounded-md absolute top-full right-4 w-48 z-60 bg-opacity-90" // Increased z-index to 60, added bg-opacity
+          style={{ background: 'rgba(255, 255, 255, 0.05)' }}
         >
           {['hero', 'about', 'projects', 'contact'].map((section) => (
             <li key={section} className="mb-2 last:mb-0">
