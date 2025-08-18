@@ -6,12 +6,12 @@ function Header() {
 
   const scrollToSection = (id) => {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    if (window.innerWidth <= 768) setIsMenuOpen(false); // Close mobile menu on click
+    if (window.innerWidth <= 768) setIsMenuOpen(false);
   };
 
   return (
     <motion.nav
-      initial={{ y: -100 }} // Slide in from top
+      initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="fixed top-0 w-full glass z-50 p-4 flex justify-between items-center"
@@ -21,14 +21,14 @@ function Header() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
         onClick={() => scrollToSection('hero')}
-        className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary cursor-pointer"
+        className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary cursor-pointer text-shadow-[0_0_15px_rgba(0,255,255,0.5)]" // Added glow
       >
         My Portfolio
       </motion.h1>
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-2xl focus:outline-none hover:text-primary transition-colors"
+          className="text-2xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]" // Added glow
         >
           ☰
         </button>
@@ -43,7 +43,7 @@ function Header() {
           <li key={section}>
             <button
               onClick={() => scrollToSection(section)}
-              className="text-sm md:text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300"
+              className="text-sm md:text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 text-shadow-[0_0_8px_rgba(0,255,255,0.2)]" // Added glow
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </button>
@@ -61,7 +61,7 @@ function Header() {
             <li key={section} className="mb-2 last:mb-0">
               <button
                 onClick={() => scrollToSection(section)}
-                className="text-base w-full text-left hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300"
+                className="text-base w-full text-left hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 text-shadow-[0_0_8px_rgba(0,255,255,0.2)]" // Added glow
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
