@@ -41,6 +41,7 @@ body {
 .project-container {
   display: flex;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .project-card {
