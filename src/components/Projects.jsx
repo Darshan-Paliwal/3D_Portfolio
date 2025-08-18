@@ -99,7 +99,7 @@ function Projects() {
               className="w-full h-40 md:h-48 lg:h-56 object-cover rounded-t-lg"
             />
             <h3
-              className="text-lg md:text-xl font-semibold mb-2 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]" {/* Replaced comment */}
+              className="text-lg md:text-xl font-semibold mb-2 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"
             >
               {project.title}
             </h3>
