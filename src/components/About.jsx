@@ -19,7 +19,7 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"> <-- Enhanced glow -->
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"> <!-- Enhanced glow -->
             Connect with Me
           </h3>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
