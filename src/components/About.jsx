@@ -1,4 +1,4 @@
-import { motion } from 'framer-variants';
+import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 function About({ scrollToContact }) {
@@ -8,7 +8,7 @@ function About({ scrollToContact }) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
+        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_20px_rgba(0,255,255,0.6)]" // Enhanced glow
       >
         About Me
       </motion.h2>
@@ -19,18 +19,20 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Connect with Me</h3>
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"> <!-- Enhanced glow -->
+            Connect with Me
+          </h3>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={scrollToContact}
-              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all"
+              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_10px_rgba(0,255,255,0.3)]" // Added glow
             >
               Connect Now
             </button>
             <a
               href="/path-to-your-cv.pdf"
               download
-              className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all"
+              className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_10px_rgba(0,255,255,0.3)]" // Added glow
             >
               Download CV
             </a>
@@ -46,7 +48,7 @@ function About({ scrollToContact }) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileHover={{ scale: 1.2, rotate: 5, textShadow: '0 0 15px rgba(0,255,255,0.6)' }}
                 className="text-2xl hover:text-primary transition"
               >
                 <Icon />
@@ -61,13 +63,15 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Skills</h3>
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"> <!-- Enhanced glow -->
+            Skills
+          </h3>
           <ul className="flex flex-wrap gap-3 justify-center">
             {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill, index) => (
               <motion.li
                 key={skill}
-                className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm shadow-md"
-                whileHover={{ scale: 1.1 }}
+                className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm text-shadow-[0_0_8px_rgba(0,255,255,0.2)]" // Added glow
+                whileHover={{ scale: 1.1, textShadow: '0 0 12px rgba(0,255,255,0.4)' }}
               >
                 {skill}
               </motion.li>
