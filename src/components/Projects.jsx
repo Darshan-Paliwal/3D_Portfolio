@@ -12,18 +12,21 @@ function Projects() {
       description: 'A modern web app built with React and Tailwind CSS.',
       skills: ['React', 'Tailwind', 'JavaScript'],
       image: 'https://via.placeholder.com/300x200',
+      link: 'https://example.com/project1', // Placeholder URL
     },
     {
       title: 'Project 2',
       description: 'A Node.js backend with RESTful API.',
       skills: ['Node.js', 'Express', 'MongoDB'],
       image: 'https://via.placeholder.com/300x200',
+      link: 'https://example.com/project2', // Placeholder URL
     },
     {
       title: 'Project 3',
       description: 'An animated portfolio using Framer Motion.',
       skills: ['React', 'Framer Motion', 'Tailwind'],
       image: 'https://via.placeholder.com/300x200',
+      link: 'https://example.com/project3', // Placeholder URL
     },
   ];
 
@@ -90,11 +93,11 @@ function Projects() {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-32 md:h-40 lg:h-48 object-cover rounded-md mb-4 shadow-md"
+              className="w-full h-40 md:h-48 lg:h-56 object-cover rounded-md mb-4 shadow-md"
             />
             <h3 className="text-lg md:text-xl font-semibold mb-2">{project.title}</h3>
             <p className="text-gray-300 text-sm md:text-base mb-4 flex-grow line-clamp-3">{project.description}</p>
-            <ul className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-2 mb-4">
               {project.skills.map((skill) => (
                 <li
                   key={skill}
@@ -104,6 +107,14 @@ function Projects() {
                 </li>
               ))}
             </ul>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center hover:shadow-lg transition-all"
+            >
+              Visit Project
+            </a>
           </motion.div>
         ))}
       </motion.div>
