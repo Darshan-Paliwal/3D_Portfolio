@@ -58,7 +58,7 @@ body {
   margin: 0 5px;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
 }
 
 .project-card.active {
@@ -82,7 +82,7 @@ body {
 
 .separator {
   height: 1px;
-  background: linear-gradient(to right, transformant, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
   margin: 2rem 0;
 }
 
