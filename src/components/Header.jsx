@@ -1,64 +1,48 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
+  const [isShrunk, setIsShrunk] = useState(false);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    const handleScrollOrClick = () => {
+      if (window.innerWidth <= 768) { // Mobile breakpoint
+        setIsShrunk(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollOrClick);
+    window.addEventListener('click', handleScrollOrClick);
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollOrClick);
+      window.removeEventListener('click', handleScrollOrClick);
+    };
+  }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 w-full glass z-50 p-4"
+    <motion.header
+      className="fixed top-0 left-0 w-full bg-gradient-to-b from-black/80 to-transparent z-50 glass p-4 flex justify-between items-center"
+      initial={{ y: 0 }}
+      animate={{ height: isShrunk ? '60px' : '80px' }} // Shrink height on mobile
+      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <h1
-          onClick={() => scrollToSection('hero')}
-          className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary cursor-pointer"
-        >
-          Portfolio
-        </h1>
-        <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-2xl focus:outline-none">
-            ☰
-          </button>
-        </div>
-        <ul className="hidden md:flex space-x-4 md:space-x-6 mt-2 md:mt-0">
-          {['hero', 'about', 'projects', 'contact'].map((section) => (
-            <li key={section}>
-              <button
-                onClick={() => scrollToSection(section)}
-                className="text-sm md:text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300"
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      {isMenuOpen && (
-        <motion.ul
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden menu-glass mt-4 space-y-2 p-4 rounded-md"
-        >
-          {['hero', 'about', 'projects', 'contact'].map((section) => (
-            <li key={section}>
-              <button
-                onClick={() => scrollToSection(section)}
-                className="text-base hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 block w-full text-left"
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </button>
-            </li>
-          ))}
-        </motion.ul>
-      )}
-    </motion.nav>
+      <motion.h1
+        className="text-xl md:text-2xl font-bold text-white"
+        animate={{ fontSize: isShrunk ? '1rem' : '1.25rem' }}
+        transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+      >
+        My Portfolio
+      </motion.h1>
+      <nav className="hidden md:flex space-x-4">
+        <a href="#hero" className="text-white hover:text-primary transition">Home</a>
+        <a href="#about" className="text-white hover:text-primary transition">About</a>
+        <a href="#projects" className="text-white hover:text-primary transition">Projects</a>
+        <a href="#contact" className="text-white hover:text-primary transition">Contact</a>
+      </nav>
+      <button className="md:hidden text-white text-2xl">☰</button> {/* Mobile menu toggle */}
+    </motion.header>
   );
 }
 
