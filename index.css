@@ -11,12 +11,19 @@ body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #ffffff;
-  overflow-x: hidden; /* Hide global horizontal scrollbar */
-  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden;  /* ❌ No horizontal scrollbar for whole site */
+  overflow-y: scroll;  /* ✅ Allow vertical scrolling */
 }
 
+/* Hide vertical scrollbar but still scroll */
 body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+  width: 0px;   /* Chrome, Safari */
+  background: transparent;
+}
+
+body {
+  -ms-overflow-style: none;  /* IE + Edge */
+  scrollbar-width: none;     /* Firefox */
 }
 
 .snap-container {
@@ -43,23 +50,23 @@ body::-webkit-scrollbar {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+/* Project container – horizontal scroll only here */
 .project-container {
   display: flex;
-  overflow-x: auto;
+  overflow-x: auto;           /* ✅ Horizontal scroll only in project section */
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-  scrollbar-width: none;    /* Hide scrollbar in Firefox */
-
-  width: 100vw;       /* Always full device width */
-  min-width: 100vw;   /* Prevent shrinking smaller than viewport */
-  height: 100%;       /* Adjust to fit content/parent height */
+  -ms-overflow-style: none;   /* hide scrollbar IE/Edge */
+  scrollbar-width: none;      /* hide scrollbar Firefox */
+  width: 100%;
   box-sizing: border-box;
 }
 
+/* Hide scrollbar for project container */
 .project-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+  display: none; /* Chrome, Safari */
 }
+
 
 .project-card {
   flex: 0 0 auto;
