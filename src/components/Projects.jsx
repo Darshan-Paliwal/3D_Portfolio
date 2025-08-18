@@ -30,9 +30,12 @@ function Projects() {
   const scroll = (direction) => {
     const container = containerRef.current;
     if (container) {
-      const cardWidth = container.querySelector('.project-card')?.offsetWidth || 400;
-      const scrollAmount = direction === 'left' ? -cardWidth - 20 : cardWidth + 20; // Adjust for margin
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const cardWidth = container.querySelector('.project-card')?.offsetWidth || 350;
+      const scrollAmount = direction === 'left' ? -cardWidth - 10 : cardWidth + 10; // Adjust for margin
+      container.scrollTo({
+        left: container.scrollLeft + scrollAmount,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -70,7 +73,7 @@ function Projects() {
       >
         My Projects
       </motion.h2>
-      <div className="w-full overflow-hidden">
+      <div className="w-full">
         <motion.div
           ref={containerRef}
           className="project-container flex space-x-2 md:space-x-4 pb-4"
@@ -80,9 +83,10 @@ function Projects() {
             <motion.div
               key={index}
               className="project-card glass p-4 md:p-6 rounded-lg flex flex-col justify-between"
-              initial={{ scale: 0.95 }}
+              initial={{ scale: 0.95, opacity: 0.9 }}
+              animate={document.querySelector('.active') === this ? { scale: 1.15, opacity: 1 } : { scale: 0.95, opacity: 0.9 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 15, duration: 0.5 }}
               whileHover={{ scale: 1.05, boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               <img
                 src={project.image}
@@ -107,20 +111,3 @@ function Projects() {
       </div>
       <div className="flex justify-center mt-4 gap-4 hidden md:flex">
         <button
-          onClick={() => scroll('left')}
-          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full hover:shadow-lg transition-all"
-        >
-          ←
-        </button>
-        <button
-          onClick={() => scroll('right')}
-          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full hover:shadow-lg transition-all"
-        >
-          →
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export default Projects;
