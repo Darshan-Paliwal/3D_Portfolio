@@ -39,13 +39,26 @@ body {
 }
 
 .project-container {
+  display: flex;
   overflow-x: hidden;
-  scroll-snap-type: x mandatory;
 }
 
 .project-card {
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
+  flex: 0 0 auto;
+  width: 80vw;
+  max-width: 400px;
+  margin: 0 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card.active {
+  transform: scale(1.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.project-card.inactive {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .menu-glass {
