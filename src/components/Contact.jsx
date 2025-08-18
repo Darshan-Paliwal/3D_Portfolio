@@ -16,83 +16,61 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Add form submission logic here (e.g., API call)
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
+    <div className="max-w-7xl mx-auto p-4 md:p-8 glass">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-6xl mx-auto p-8"
+        transition={{ duration: 0.6 }}
+        className="text-2xl md:text-4xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Get in Touch</h2>
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium">
-              Name
+        Get in Touch
+      </motion.h2>
+      <motion.form
+        onSubmit={handleSubmit}
+        className="max-w-md mx-auto space-y-4"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        {['name', 'email', 'contact', 'message'].map((field) => (
+          <div key={field}>
+            <label htmlFor={field} className="block text-sm font-medium capitalize">
+              {field}
             </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-2 bg-gray-800 rounded-md text-white"
-              required
-            />
+            {field === 'message' ? (
+              <textarea
+                id={field}
+                name={field}
+                value={formData[field]}
+                onChange={handleChange}
+                className="w-full p-3 bg-gray-800 bg-opacity-50 rounded-md text-white border border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary transition"
+                rows="5"
+                required
+              />
+            ) : (
+              <input
+                type={field === 'email' ? 'email' : field === 'contact' ? 'tel' : 'text'}
+                id={field}
+                name={field}
+                value={formData[field]}
+                onChange={handleChange}
+                className="w-full p-3 bg-gray-800 bg-opacity-50 rounded-md text-white border border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary transition"
+                required={field !== 'contact'}
+              />
+            )}
           </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-2 bg-gray-800 rounded-md text-white"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="contact" className="block text-sm font-medium">
-              Contact Number
-            </label>
-            <input
-              type="tel"
-              id="contact"
-              name="contact"
-              value={formData.contact}
-              onChange={handleChange}
-              className="w-full p-2 bg-gray-800 rounded-md text-white"
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full p-2 bg-gray-800 rounded-md text-white"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
-          >
-            Send Message
-          </button>
-        </form>
-      </motion.div>
-    </section>
+        ))}
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full hover:shadow-lg transition-all"
+        >
+          Send Message
+        </button>
+      </motion.form>
+    </div>
   );
 }
 
