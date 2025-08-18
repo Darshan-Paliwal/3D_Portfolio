@@ -125,20 +125,7 @@ function Projects() {
           </motion.div>
         ))}
       </motion.div>
-      <div className="flex justify-center mt-4 gap-4 hidden md:flex">
-        <button
-          onClick={() => scroll('left')}
-          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all"
-        >
-          ←
-        </button>
-        <button
-          onClick={() => scroll('right')}
-          className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all"
-        >
-          →
-        </button>
-      </div>
+      {/* Removed the scroll buttons div */}
     </div>
   );
 }
