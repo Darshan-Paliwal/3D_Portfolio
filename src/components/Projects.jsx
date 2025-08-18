@@ -89,11 +89,12 @@ function Projects() {
             animate={{ scale: 1, opacity: 1 }}
             whileHover={{ scale: 1.05, boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)' }}
             transition={{ type: 'spring', stiffness: 200, damping: 15, duration: 0.5 }}
+            style={{ overflow: 'hidden' }} // Ensure content doesn't overflow and cut edges
           >
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-40 md:h-48 lg:h-56 object-cover rounded-md mb-4 shadow-md"
+              className="w-full h-40 md:h-48 lg:h-56 object-cover rounded-t-lg mb-4 shadow-md"
             />
             <h3 className="text-lg md:text-xl font-semibold mb-2">{project.title}</h3>
             <p className="text-gray-300 text-sm md:text-base mb-4 flex-grow line-clamp-3">{project.description}</p>
