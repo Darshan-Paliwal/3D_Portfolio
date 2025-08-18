@@ -11,7 +11,8 @@ body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #ffffff;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Hide global horizontal scrollbar */
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .snap-container {
@@ -33,7 +34,7 @@ body {
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border-radius: 1.5rem; /* Increased for smoother edges */
+  border-radius: 1.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -53,8 +54,8 @@ body {
 
 .project-card {
   flex: 0 0 auto;
-  width: 75vw; /* Increased from 70vw for larger size on smartphones */
-  min-width: 300px; /* Minimum width to avoid tiny cards */
+  width: 75vw;
+  min-width: 300px;
   max-width: 400px;
   margin: 0 5px;
   scroll-snap-align: center;
@@ -89,7 +90,7 @@ body {
 
 @media (min-width: 768px) {
   .project-card {
-    width: 45vw; /* Adjusted for larger screens */
+    width: 45vw;
     max-width: 450px;
     margin: 0 10px;
   }
@@ -97,8 +98,29 @@ body {
 
 @media (min-width: 1024px) {
   .project-card {
-    width: 35vw; /* Adjusted for larger screens */
+    width: 35vw;
     max-width: 500px;
     margin: 0 15px;
   }
 }
+
+/* Moving Particles for Engagement */
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+.particle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: float 15s infinite ease-in-out;
+}
+
+.particle-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.particle-2 { top: 30%; right: 15%; animation-delay: 2s; }
+.particle-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+.particle-4 { bottom: 10%; right: 10%; animation-delay: 6s; }
