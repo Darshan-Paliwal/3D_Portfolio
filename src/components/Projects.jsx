@@ -1,62 +1,57 @@
-import React from "react";
-import { motion } from "framer-motion";
-
-const projects = [
-  {
-    title: "Portfolio Website",
-    desc: "A modern portfolio using React and Tailwind.",
-    img: "https://via.placeholder.com/400x250",
-    tech: ["React", "Tailwind", "Framer Motion"],
-  },
-  {
-    title: "E-commerce App",
-    desc: "Full-stack MERN store with authentication.",
-    img: "https://via.placeholder.com/400x250",
-    tech: ["MongoDB", "Express", "React", "Node"],
-  },
-  {
-    title: "Chat Application",
-    desc: "Real-time chat app using Socket.io.",
-    img: "https://via.placeholder.com/400x250",
-    tech: ["Node", "Socket.io", "React"],
-  },
-];
+import { motion } from 'framer-motion';
 
 function Projects() {
-  return (
-    <section
-      id="projects"
-      className="min-h-screen px-10 py-20 bg-gray-50"
-    >
-      <h2 className="text-4xl font-bold text-center">Projects</h2>
+  const projects = [
+    {
+      title: 'Project 1',
+      description: 'A modern web app built with React and Tailwind CSS.',
+      skills: ['React', 'Tailwind', 'JavaScript'],
+      image: 'https://via.placeholder.com/300x200',
+    },
+    {
+      title: 'Project 2',
+      description: 'A Node.js backend with RESTful API.',
+      skills: ['Node.js', 'Express', 'MongoDB'],
+      image: 'https://via.placeholder.com/300x200',
+    },
+    {
+      title: 'Project 3',
+      description: 'An animated portfolio using Framer Motion.',
+      skills: ['React', 'Framer Motion', 'Tailwind'],
+      image: 'https://via.placeholder.com/300x200',
+    },
+  ];
 
+  return (
+    <section id="projects" className="min-h-screen flex items-center justify-center">
       <motion.div
-        className="flex overflow-x-scroll gap-10 mt-10 pb-5 scrollbar-hide"
-        whileTap={{ cursor: "grabbing" }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-6xl mx-auto p-8"
       >
-        {projects.map((p, i) => (
-          <motion.div
-            key={i}
-            className="min-w-[350px] bg-white rounded-2xl shadow-lg overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-          >
-            <img src={p.img} alt={p.title} className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h3 className="text-2xl font-bold">{p.title}</h3>
-              <p className="text-gray-600 mt-2">{p.desc}</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="px-3 py-1 text-sm bg-gray-200 rounded-full"
-                  >
-                    {t}
-                  </span>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">My Projects</h2>
+        <div className="flex overflow-x-auto space-x-6 pb-4 snap-x snap-mandatory">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              className="min-w-[300px] bg-gray-800 rounded-lg p-6 snap-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-md mb-4" />
+              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-gray-300 mb-4">{project.description}</p>
+              <ul className="flex flex-wrap gap-2">
+                {project.skills.map((skill) => (
+                  <li key={skill} className="bg-primary px-3 py-1 rounded-full text-sm">
+                    {skill}
+                  </li>
                 ))}
-              </div>
-            </div>
-          </motion.div>
-        ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </section>
   );
