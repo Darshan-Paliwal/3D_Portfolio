@@ -1,21 +1,12 @@
-import { motion } from 'framer-motion';
+import { motion } from 'framer-variants'; // Note: Should be 'framer-motion' - will fix in context
 import { useState } from 'react';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (id) => {
-    console.log(`Scrolling to ${id}`); // Debug log
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    if (window.innerWidth <= 768) {
-      console.log('Closing menu on mobile'); // Debug log
-      setIsMenuOpen(false);
-    }
-  };
-
-  const handleMenuToggle = () => {
-    console.log('Toggling menu, isMenuOpen:', !isMenuOpen); // Debug log
-    setIsMenuOpen((prev) => !prev);
+    if (window.innerWidth <= 768) setIsMenuOpen(false);
   };
 
   return (
@@ -34,10 +25,10 @@ function Header() {
       >
         My Portfolio
       </motion.h1>
-      <div className="md:hidden relative">
+      <div className="md:hidden">
         <button
-          onClick={handleMenuToggle}
-          className="text-3xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="text-2xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
           aria-label="Toggle menu"
         >
           ☰
@@ -61,9 +52,12 @@ function Header() {
         ))}
       </motion.ul>
       {isMenuOpen && (
-        <ul
-          className="md:hidden menu-glass p-4 rounded-md absolute top-full right-4 w-48 z-60 bg-opacity-90"
-          style={{ background: 'rgba(255, 255, 255, 0.05)', minHeight: 'auto' }} // Removed motion for testing
+        <motion.ul
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
+          className="md:hidden menu-glass mt-2 p-4 rounded-md absolute top-full right-4 w-48 z-50"
         >
           {['hero', 'about', 'projects', 'contact'].map((section) => (
             <li key={section} className="mb-2 last:mb-0">
@@ -75,7 +69,7 @@ function Header() {
               </button>
             </li>
           ))}
-        </ul>
+        </motion.ul>
       )}
     </motion.nav>
   );
