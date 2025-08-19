@@ -34,10 +34,10 @@ function Header() {
       >
         My Portfolio
       </motion.h1>
-      <div className="md:hidden">
+      <div className="md:hidden relative">
         <button
           onClick={handleMenuToggle}
-          className="text-2xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+          className="text-3xl focus:outline-none hover:text-primary transition-colors text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
           aria-label="Toggle menu"
         >
           ☰
@@ -61,13 +61,9 @@ function Header() {
         ))}
       </motion.ul>
       {isMenuOpen && (
-        <motion.ul
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.2 }}
-          className="md:hidden menu-glass mt-2 p-4 rounded-md absolute top-full right-4 w-48 z-60"
-          style={{ background: 'rgba(255, 255, 255, 0.05)' }}
+        <ul
+          className="md:hidden menu-glass p-4 rounded-md absolute top-full right-4 w-48 z-60 bg-opacity-90"
+          style={{ background: 'rgba(255, 255, 255, 0.05)', minHeight: 'auto' }} // Removed motion for testing
         >
           {['hero', 'about', 'projects', 'contact'].map((section) => (
             <li key={section} className="mb-2 last:mb-0">
@@ -79,7 +75,7 @@ function Header() {
               </button>
             </li>
           ))}
-        </motion.ul>
+        </ul>
       )}
     </motion.nav>
   );
