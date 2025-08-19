@@ -3,20 +3,24 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 function About({ scrollToContact }) {
   const handleDownloadCV = () => {
-    console.log('Download CV clicked'); // Debug log
+    console.log('Download CV triggered');
     const link = document.createElement('a');
-    link.href = 'https://drive.google.com/uc?export=download&id=11cDUwjShauIh7djwseQWYNUog_MkxK6M'; // Direct download URL
+    link.href = 'https://drive.google.com/uc?export=download&id=11cDUwjShauIh7djwseQWYNUog_MkxK6M';
     link.download = 'Darshan_Paliwal_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    // Fallback to open in new tab if download fails
-    window.open('https://drive.google.com/file/d/11cDUwjShauIh7djwseQWYNUog_MkxK6M/view?usp=drivesdk', '_blank');
+    // Fallback with delay
+    setTimeout(() => {
+      if (!link.downloaded) {
+        console.log('Download fallback triggered');
+        window.open('https://drive.google.com/file/d/11cDUwjShauIh7djwseQWYNUog_MkxK6M/view?usp=drivesdk', '_blank');
+      }
+    }, 2000);
   };
 
   return (
     <div className="max-w-7xl mx-auto p-4 md:p-8 text-center glass">
-      {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +31,6 @@ function About({ scrollToContact }) {
       </motion.h2>
 
       <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-        {/* Connect Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,12 +41,11 @@ function About({ scrollToContact }) {
             Connect with Me
           </h3>
 
-          {/* Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={(e) => {
-                e.preventDefault(); // Prevent default behavior if any
-                console.log('Connect Now clicked');
+                e.preventDefault();
+                console.log('Connect Now triggered');
                 scrollToContact();
               }}
               className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_8px_rgba(0,255,255,0.3)]"
@@ -51,7 +53,6 @@ function About({ scrollToContact }) {
               Connect Now
             </button>
 
-            {/* Download CV */}
             <button
               onClick={handleDownloadCV}
               className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_8px_rgba(0,255,255,0.3)]"
@@ -60,7 +61,6 @@ function About({ scrollToContact }) {
             </button>
           </div>
 
-          {/* Social Links */}
           <div className="flex justify-center space-x-6 mt-6">
             {[
               { Icon: FaGithub, url: 'https://github.com/Darshan-Paliwal/' },
@@ -85,10 +85,8 @@ function About({ scrollToContact }) {
           </div>
         </motion.div>
 
-        {/* Separator for mobile */}
         <div className="separator md:hidden"></div>
 
-        {/* Skills Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +101,7 @@ function About({ scrollToContact }) {
             {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill) => (
               <motion.li
                 key={skill}
-                className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm text-shadow-[0_0_6px_rgba(0,255,255,0.2)]"
+                className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm text-shadow-[0_0-6px_rgba(0,255,255,0.2)]"
                 whileHover={{ scale: 1.1, textShadow: '0 0 10px rgba(0,255,255,0.3)' }}
               >
                 {skill}
