@@ -11,8 +11,8 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  /* Extreme dark black gradient with subtle wavy motion */
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #2d2d2d 60%, #3d3d3d 100%);
+  /* Extreme dark black gradient with subtle cosmic waves (inspired by second image reference) */
+  background: linear-gradient(135deg, #000000 0%, #0f0f2a 30%, #1a1a3d 60%, #2d2d5a 100%);
   background-size: 200% 200%;
   animation: waveMotion 15s ease infinite;
   color: #ffffff;
@@ -309,7 +309,7 @@ h3 {
   animation-delay: 3s;
 }
 
-/* New Wavy Gradient Animation */
+/* Wavy Gradient Animation */
 @keyframes waveMotion {
   0% {
     background-position: 0% 0%;
