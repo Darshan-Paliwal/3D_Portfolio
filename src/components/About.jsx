@@ -41,7 +41,7 @@ function About({ scrollToContact }) {
             {/* Download CV (fixed path and ensured download works) */}
             <a
               href="/Darshan_Paliwal_CV.pdf" // Adjusted path to public directory
-              download="Darshan_Paliwal_CV.pdf"
+              download="/Darshan_Paliwal_CV.pdf"
               onClick={() => console.log('Download CV clicked')} // Debug log
               className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_8px_rgba(0,255,255,0.3)]" // Reduced glow
             >
