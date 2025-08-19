@@ -32,7 +32,7 @@ function About({ scrollToContact }) {
               Connect Now
             </button>
             <a
-              href="/path-to-your-cv.pdf"
+              href="/Darshan_Paliwal_CV.pdf"
               download
               className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
             >
@@ -41,9 +41,9 @@ function About({ scrollToContact }) {
           </div>
           <div className="flex justify-center space-x-4 mt-6">
             {[
-              { Icon: FaGithub, url: 'https://github.com' },
-              { Icon: FaLinkedin, url: 'https://linkedin.com' },
-              { Icon: FaTwitter, url: 'https://twitter.com' },
+              { Icon: FaGithub, url: 'https://github.com/Darshan-Paliwal/' },
+              { Icon: FaLinkedin, url: 'https://www.linkedin.com/in/darshan-paliwal/' },
+              { Icon: FaTwitter, url: 'https://x.com/DARVIANT_' },
             ].map(({ Icon, url }, index) => (
               <motion.a
                 key={index}
