@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 function About({ scrollToContact }) {
   return (
     <div className="max-w-7xl mx-auto p-4 md:p-8 text-center glass">
+      {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -12,18 +13,20 @@ function About({ scrollToContact }) {
       >
         About Me
       </motion.h2>
+
       <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+        {/* Connect Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="md:w-1/2"
         >
-          <h3
-            className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"
-          >
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
             Connect with Me
           </h3>
+
+          {/* Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={scrollToContact}
@@ -31,47 +34,58 @@ function About({ scrollToContact }) {
             >
               Connect Now
             </button>
+
+            {/* Download CV (make sure CV is in public/) */}
             <a
               href="/Darshan_Paliwal_CV.pdf"
-              download
+              download="Darshan_Paliwal_CV.pdf"
               className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
             >
               Download CV
             </a>
           </div>
-          <div className="flex justify-center space-x-4 mt-6">
+
+          {/* Social Links */}
+          <div className="flex justify-center space-x-6 mt-6">
             {[
               { Icon: FaGithub, url: 'https://github.com/Darshan-Paliwal/' },
               { Icon: FaLinkedin, url: 'https://www.linkedin.com/in/darshan-paliwal/' },
               { Icon: FaTwitter, url: 'https://x.com/DARVIANT_' },
             ].map(({ Icon, url }, index) => (
-              <motion.a
+              <motion.div
                 key={index}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5, textShadow: '0 0 15px rgba(0,255,255,0.6)' }}
-                className="text-2xl hover:text-primary transition"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="text-2xl"
               >
-                <Icon />
-              </motion.a>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition relative z-50"
+                >
+                  <Icon />
+                </a>
+              </motion.div>
             ))}
           </div>
         </motion.div>
+
+        {/* Separator for mobile */}
         <div className="separator md:hidden"></div>
+
+        {/* Skills Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="md:w-1/2"
         >
-          <h3
-            className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"
-          >
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
             Skills
           </h3>
+
           <ul className="flex flex-wrap gap-3 justify-center">
-            {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill, index) => (
+            {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill) => (
               <motion.li
                 key={skill}
                 className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm text-shadow-[0_0_8px_rgba(0,255,255,0.2)]"
