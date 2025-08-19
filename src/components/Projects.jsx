@@ -70,7 +70,7 @@ function Projects() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_20px_rgba(0,255,255,0.6)]"
+        className="text-2xl md:text-4xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_8px_rgba(0,0,0,0.5)]" // Darker, reduced glow
       >
         My Projects
       </motion.h2>
@@ -86,10 +86,10 @@ function Projects() {
             initial={{ scale: 0.95, opacity: 0.9 }}
             animate={
               document.querySelector('.project-card.active') === this
-                ? { scale: 1.15, boxShadow: 'none', textShadow: '0 0 25px rgba(0,255,255,0.7)' }
-                : { scale: 0.95, boxShadow: 'none', textShadow: '0 0 10px rgba(0,255,255,0.3)' }
+                ? { scale: 1.15, boxShadow: 'none', textShadow: '0 0 8px rgba(0,0,0,0.5)' } // Darker, reduced glow
+                : { scale: 0.95, boxShadow: 'none', textShadow: '0 0 4px rgba(0,0,0,0.3)' }
             }
-            whileHover={{ scale: 1.05, textShadow: '0 0 30px rgba(0,255,255,0.8)' }}
+            whileHover={{ scale: 1.05, textShadow: '0 0 10px rgba(0,0,0,0.5)' }} // Darker, reduced glow
             transition={{ type: 'spring', stiffness: 150, damping: 12, duration: 0.6 }}
             style={{ overflow: 'hidden' }}
           >
@@ -99,7 +99,7 @@ function Projects() {
               className="w-full h-40 md:h-48 lg:h-56 object-cover rounded-t-lg"
             />
             <h3
-              className="text-lg md:text-xl font-semibold mb-2 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"
+              className="text-lg md:text-xl font-semibold mb-2 text-shadow-[0_0_8px_rgba(0,0,0,0.5)]" // Darker, reduced glow
             >
               {project.title}
             </h3>
@@ -108,7 +108,7 @@ function Projects() {
               {project.skills.map((skill) => (
                 <li
                   key={skill}
-                  className="bg-gradient-to-r from-primary to-secondary px-2 md:px-3 py-1 rounded-full text-xs md:text-sm text-shadow-[0_0_8px_rgba(0,255,255,0.2)]"
+                  className="bg-gradient-to-r from-primary to-secondary px-2 md:px-3 py-1 rounded-full text-xs md:text-sm text-shadow-[0_0_8px_rgba(0,0,0,0.5)]" // Darker, reduced glow
                 >
                   {skill}
                 </li>
@@ -118,14 +118,14 @@ function Projects() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center text-shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:text-shadow-[0_0_15px_rgba(0,255,255,0.6)] transition-all"
+              className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center text-shadow-[0_0_8px_rgba(0,0,0,0.5)] hover:text-shadow-[0_0_10px_rgba(0,0,0,0.6)] transition-all" // Darker, reduced glow
+              onClick={() => console.log('Visit Site clicked')} // Debug log
             >
               Visit Project
             </a>
           </motion.div>
         ))}
       </motion.div>
-      {/* Removed the scroll buttons div */}
     </div>
   );
 }
