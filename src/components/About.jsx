@@ -2,29 +2,13 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 function About({ scrollToContact }) {
-  const handleDownloadCV = () => {
-    console.log('Initiating Download CV');
-    const link = document.createElement('a');
-    link.href = 'https://drive.google.com/uc?export=download&id=11cDUwjShauIh7djwseQWYNUog_MkxK6M';
-    link.download = 'Darshan_Paliwal_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    console.log('Download triggered');
-    // Fallback after 1 second
-    setTimeout(() => {
-      console.log('Checking download status');
-      window.open('https://drive.google.com/file/d/11cDUwjShauIh7djwseQWYNUog_MkxK6M/view?usp=drivesdk', '_blank');
-    }, 1000);
-  };
-
   return (
     <div className="max-w-7xl mx-auto p-4 md:p-8 text-center glass">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_15px_rgba(0,255,255,0.5)]"
+        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0-15px_rgba(0,255,255,0.5)]"
       >
         About Me
       </motion.h2>
@@ -52,12 +36,15 @@ function About({ scrollToContact }) {
               Connect Now
             </button>
 
-            <button
-              onClick={handleDownloadCV}
+            <a
+              href="https://drive.google.com/file/d/11cDUwjShauIh7djwseQWYNUog_MkxK6M/view?usp=drivesdk"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => console.log('Download CV clicked')}
               className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0-8px_rgba(0,255,255,0.3)]"
             >
               Download CV
-            </button>
+            </a>
           </div>
 
           <div className="flex justify-center space-x-6 mt-6">
