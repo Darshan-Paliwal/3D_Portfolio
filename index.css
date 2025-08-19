@@ -11,7 +11,10 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  /* New greyish gradient with wavy motion */
+  background: linear-gradient(135deg, #4a4a4a 0%, #6b6b6b 30%, #8a8a8a 60%, #b0b0b0 100%);
+  background-size: 200% 200%;
+  animation: waveMotion 15s ease infinite;
   color: #ffffff;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -132,7 +135,7 @@ body::-webkit-scrollbar {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
   padding: 1rem;
-  box-shadow: none; /* Removed shadow, relying on glow */
+  box-shadow: none;
 }
 
 .menu-glass::before {
@@ -158,17 +161,20 @@ body::-webkit-scrollbar {
   margin: 2rem 0;
 }
 
-button, a {
+button,
+a {
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-button:hover, a:hover {
+button:hover,
+a:hover {
   transform: translateY(-2px);
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* Enhanced hover glow */
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
 }
 
-h2, h3 {
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* Enhanced glow */
+h2,
+h3 {
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
 }
 
 @media (min-width: 768px) {
@@ -198,8 +204,12 @@ h2, h3 {
 
 /* Moving Texts */
 @keyframes slide {
-  0% { transform: translateX(100vw); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .moving-text {
@@ -207,19 +217,32 @@ h2, h3 {
   font-size: 2rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Enhanced glow */
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
   white-space: nowrap;
   animation: slide 15s linear infinite;
 }
 
-.moving-text-1 { top: 10%; animation-delay: 0s; }
-.moving-text-2 { top: 90%; animation-delay: 5s; }
+.moving-text-1 {
+  top: 10%;
+  animation-delay: 0s;
+}
+
+.moving-text-2 {
+  top: 90%;
+  animation-delay: 5s;
+}
 
 /* Enhanced Moving Particles */
 @keyframes float {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(180deg); }
-  100% { transform: translateY(0) rotate(360deg); }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
 }
 
 .particle {
@@ -229,13 +252,72 @@ h2, h3 {
   opacity: 0.6;
 }
 
-.particle.small { width: 8px; height: 8px; }
-.particle.medium { width: 12px; height: 12px; }
-.particle.large { width: 16px; height: 16px; }
+.particle.small {
+  width: 8px;
+  height: 8px;
+}
 
-.particle-1 { top: 5%; left: 5%; background: rgba(0, 255, 255, 0.3); animation-delay: 0s; }
-.particle-2 { top: 20%; right: 10%; background: rgba(255, 0, 255, 0.3); animation-delay: 2s; }
-.particle-3 { top: 40%; left: 15%; background: rgba(0, 255, 0, 0.3); animation-delay: 4s; }
-.particle-4 { top: 60%; right: 20%; background: rgba(255, 255, 0, 0.3); animation-delay: 6s; }
-.particle-5 { bottom: 10%; left: 10%; background: rgba(255, 165, 0, 0.3); animation-delay: 1s; }
-.particle-6 { bottom: 20%; right: 15%; background: rgba(0, 0, 255, 0.3); animation-delay: 3s; }
+.particle.medium {
+  width: 12px;
+  height: 12px;
+}
+
+.particle.large {
+  width: 16px;
+  height: 16px;
+}
+
+.particle-1 {
+  top: 5%;
+  left: 5%;
+  background: rgba(0, 255, 255, 0.3);
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  top: 20%;
+  right: 10%;
+  background: rgba(255, 0, 255, 0.3);
+  animation-delay: 2s;
+}
+
+.particle-3 {
+  top: 40%;
+  left: 15%;
+  background: rgba(0, 255, 0, 0.3);
+  animation-delay: 4s;
+}
+
+.particle-4 {
+  top: 60%;
+  right: 20%;
+  background: rgba(255, 255, 0, 0.3);
+  animation-delay: 6s;
+}
+
+.particle-5 {
+  bottom: 10%;
+  left: 10%;
+  background: rgba(255, 165, 0, 0.3);
+  animation-delay: 1s;
+}
+
+.particle-6 {
+  bottom: 20%;
+  right: 15%;
+  background: rgba(0, 0, 255, 0.3);
+  animation-delay: 3s;
+}
+
+/* New Wavy Gradient Animation */
+@keyframes waveMotion {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
