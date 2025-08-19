@@ -14,48 +14,41 @@ function App() {
   const opacityTransform = (start, end) => useTransform(scrollYProgress, [start - 0.2, start, end, end + 0.2], [0, 1, 1, 0]);
 
   const scrollToContact = () => {
-    contactRef.current.scrollIntoView({ behavior: 'smooth' });
+    console.log('scrollToContact called'); // Debug log
+    if (contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.log('contactRef is null'); // Debug log if ref not set
+    }
   };
 
   return (
-    <div ref={containerRef} className="snap-container min-h-screen relative">
-      {/* Restored Moving Particles */}
-      <div className="particle small particle-1"></div>
-      <div className="particle medium particle-2"></div>
-      <div className="particle large particle-3"></div>
-      <div className="particle medium particle-4"></div>
-      <div className="particle small particle-5"></div>
-      <div className="particle large particle-6"></div>
-
-      {/* Restored Moving Texts */}
-      <div className="moving-text moving-text-1">Explore My Work ✦</div>
-      <div className="moving-text moving-text-2">Get in Touch ✧</div>
-
+    <div ref={containerRef} className="snap-container min-h-screen">
       <Header />
       <motion.section
         id="hero"
-        className="section pt-20"
+        className="section"
         style={{ opacity: opacityTransform(0, 0.25) }}
       >
         <Hero />
       </motion.section>
       <motion.section
         id="about"
-        className="section pt-20"
+        className="section"
         style={{ opacity: opacityTransform(0.25, 0.5) }}
       >
         <About scrollToContact={scrollToContact} />
       </motion.section>
       <motion.section
         id="projects"
-        className="section pt-20"
+        className="section"
         style={{ opacity: opacityTransform(0.5, 0.75) }}
       >
         <Projects />
       </motion.section>
       <motion.section
         id="contact"
-        className="section pt-20"
+        className="section"
         style={{ opacity: opacityTransform(0.75, 1) }}
         ref={contactRef}
       >
