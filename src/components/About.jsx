@@ -37,8 +37,8 @@ function About({ scrollToContact }) {
 
             {/* Download CV (make sure CV is in public/) */}
             <a
-              href="/src/Darshan_Paliwal_CV.pdf"
-              download="src/Darshan_Paliwal_CV.pdf"
+              href="https://github.com/Darshan-Paliwal/Main_Portfolio/tree/main/src/Darshan_Paliwal_CV.pdf"
+              download="https://github.com/Darshan-Paliwal/Main_Portfolio/tree/main/src/Darshan_Paliwal_CV.pdf"
               className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
             >
               Download CV
