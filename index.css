@@ -11,7 +11,6 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  /* Extreme dark black gradient with cosmic waves */
   background: linear-gradient(135deg, #000000 0%, #0f0f2a 30%, #1a1a3d 60%, #2d2d5a 100%);
   background-size: 200% 200%;
   animation: waveMotion 15s ease infinite;
@@ -40,7 +39,7 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 0 2rem 0;
+  padding: 2rem 0;
   scroll-snap-align: center;
   scroll-snap-stop: always;
   position: relative;
@@ -56,6 +55,7 @@ body::-webkit-scrollbar {
   max-width: 1200px;
   position: relative;
   overflow: hidden;
+  z-index: 10; /* Ensure content is clickable */
 }
 
 .glass::before {
@@ -82,9 +82,10 @@ body::-webkit-scrollbar {
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  margin-left: 0;
-  padding-left: 0;
+  margin: 0;
+  padding: 0;
   width: 100%;
+  z-index: 10; /* Ensure clickable */
 }
 
 .project-container::-webkit-scrollbar {
@@ -101,6 +102,7 @@ body::-webkit-scrollbar {
   scroll-snap-stop: always;
   transition: transform 0.5s ease, opacity 0.5s ease;
   position: relative;
+  z-index: 10; /* Ensure clickable */
 }
 
 .project-card::before {
@@ -122,7 +124,7 @@ body::-webkit-scrollbar {
 
 .project-card.active {
   transform: scale(1.15);
-  z-index: 10;
+  z-index: 20;
 }
 
 .project-card.inactive {
@@ -136,6 +138,7 @@ body::-webkit-scrollbar {
   border-radius: 0.5rem;
   padding: 1rem;
   box-shadow: none;
+  z-index: 60; /* High z-index for mobile menu */
 }
 
 .menu-glass::before {
@@ -163,18 +166,19 @@ body::-webkit-scrollbar {
 
 button,
 a {
+  pointer-events: auto; /* Ensure buttons are clickable */
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 button:hover,
 a:hover {
   transform: translateY(-2px);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Darker, reduced glow */
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Slightly reduced glow */
 }
 
 h2,
 h3 {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Darker, reduced glow */
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Slightly reduced glow */
 }
 
 @media (min-width: 768px) {
@@ -204,12 +208,8 @@ h3 {
 
 /* Moving Texts */
 @keyframes slide {
-  0% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
 }
 
 .moving-text {
@@ -217,7 +217,7 @@ h3 {
   font-size: 2rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Darker, reduced glow */
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Slightly reduced glow */
   white-space: nowrap;
   animation: slide 15s linear infinite;
 }
@@ -234,15 +234,9 @@ h3 {
 
 /* Enhanced Moving Particles */
 @keyframes float {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-30px) rotate(180deg);
-  }
-  100% {
-    transform: translateY(0) rotate(360deg);
-  }
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
 }
 
 .particle {
@@ -250,74 +244,23 @@ h3 {
   border-radius: 50%;
   animation: float 12s infinite ease-in-out;
   opacity: 0.6;
+  z-index: 5; /* Below content */
 }
 
-.particle.small {
-  width: 8px;
-  height: 8px;
-}
+.particle.small { width: 8px; height: 8px; }
+.particle.medium { width: 12px; height: 12px; }
+.particle.large { width: 16px; height: 16px; }
 
-.particle.medium {
-  width: 12px;
-  height: 12px;
-}
-
-.particle.large {
-  width: 16px;
-  height: 16px;
-}
-
-.particle-1 {
-  top: 5%;
-  left: 5%;
-  background: rgba(0, 255, 255, 0.3);
-  animation-delay: 0s;
-}
-
-.particle-2 {
-  top: 20%;
-  right: 10%;
-  background: rgba(255, 0, 255, 0.3);
-  animation-delay: 2s;
-}
-
-.particle-3 {
-  top: 40%;
-  left: 15%;
-  background: rgba(0, 255, 0, 0.3);
-  animation-delay: 4s;
-}
-
-.particle-4 {
-  top: 60%;
-  right: 20%;
-  background: rgba(255, 255, 0, 0.3);
-  animation-delay: 6s;
-}
-
-.particle-5 {
-  bottom: 10%;
-  left: 10%;
-  background: rgba(255, 165, 0, 0.3);
-  animation-delay: 1s;
-}
-
-.particle-6 {
-  bottom: 20%;
-  right: 15%;
-  background: rgba(0, 0, 255, 0.3);
-  animation-delay: 3s;
-}
+.particle-1 { top: 5%; left: 5%; background: rgba(0, 255, 255, 0.3); animation-delay: 0s; }
+.particle-2 { top: 20%; right: 10%; background: rgba(255, 0, 255, 0.3); animation-delay: 2s; }
+.particle-3 { top: 40%; left: 15%; background: rgba(0, 255, 0, 0.3); animation-delay: 4s; }
+.particle-4 { top: 60%; right: 20%; background: rgba(255, 255, 0, 0.3); animation-delay: 6s; }
+.particle-5 { bottom: 10%; left: 10%; background: rgba(255, 165, 0, 0.3); animation-delay: 1s; }
+.particle-6 { bottom: 20%; right: 15%; background: rgba(0, 0, 255, 0.3); animation-delay: 3s; }
 
 /* Wavy Gradient Animation */
 @keyframes waveMotion {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
