@@ -11,7 +11,7 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  /* Extreme dark black gradient with subtle cosmic waves (inspired by second image reference) */
+  /* Extreme dark black gradient with cosmic waves */
   background: linear-gradient(135deg, #000000 0%, #0f0f2a 30%, #1a1a3d 60%, #2d2d5a 100%);
   background-size: 200% 200%;
   animation: waveMotion 15s ease infinite;
@@ -169,12 +169,12 @@ a {
 button:hover,
 a:hover {
   transform: translateY(-2px);
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6); // Darker, reduced glow
 }
 
 h2,
 h3 {
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); // Darker, reduced glow
 }
 
 @media (min-width: 768px) {
@@ -217,7 +217,7 @@ h3 {
   font-size: 2rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); // Darker, reduced glow
   white-space: nowrap;
   animation: slide 15s linear infinite;
 }
