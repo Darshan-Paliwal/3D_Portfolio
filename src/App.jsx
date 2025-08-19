@@ -14,12 +14,11 @@ function App() {
   const opacityTransform = (start, end) => useTransform(scrollYProgress, [start - 0.2, start, end, end + 0.2], [0, 1, 1, 0]);
 
   const scrollToContact = () => {
-    console.log('Attempting to scroll to Contact');
+    console.log('Scrolling to Contact');
     if (contactRef.current) {
-      contactRef.current.scrollIntoView({ behavior: 'auto', block: 'start' }); // Changed to 'auto' for instant response
-      console.log('Scrolled to Contact section');
+      contactRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
     } else {
-      console.error('Contact ref not available');
+      console.error('Contact ref not found');
     }
   };
 
