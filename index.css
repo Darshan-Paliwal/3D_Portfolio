@@ -169,12 +169,12 @@ a {
 button:hover,
 a:hover {
   transform: translateY(-2px);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6); // Darker, reduced glow
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Darker, reduced glow */
 }
 
 h2,
 h3 {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); // Darker, reduced glow
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Darker, reduced glow */
 }
 
 @media (min-width: 768px) {
@@ -217,7 +217,7 @@ h3 {
   font-size: 2rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); // Darker, reduced glow
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Darker, reduced glow */
   white-space: nowrap;
   animation: slide 15s linear infinite;
 }
