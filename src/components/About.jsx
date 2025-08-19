@@ -9,7 +9,7 @@ function About({ scrollToContact }) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_20px_rgba(0,255,255,0.6)]"
+        className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-shadow-[0_0_15px_rgba(0,255,255,0.5)]" // Reduced glow from 20px to 15px
       >
         About Me
       </motion.h2>
@@ -22,24 +22,28 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 text-shadow-[0_0_12px_rgba(0,255,255,0.4)]"> {/* Reduced glow */}
             Connect with Me
           </h3>
 
           {/* Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
-              onClick={scrollToContact}
-              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+              onClick={() => {
+                console.log('Connect Now clicked'); // Debug log
+                if (scrollToContact) scrollToContact();
+              }}
+              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_8px_rgba(0,255,255,0.3)]" // Reduced glow
             >
               Connect Now
             </button>
 
-            {/* Download CV (make sure CV is in public/) */}
+            {/* Download CV (fixed path and ensured download works) */}
             <a
-              href="https://github.com/Darshan-Paliwal/Main_Portfolio/tree/main/src/Darshan_Paliwal_CV.pdf"
-              download="https://github.com/Darshan-Paliwal/Main_Portfolio/tree/main/src/Darshan_Paliwal_CV.pdf"
-              className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_10px_rgba(0,255,255,0.3)]"
+              href="/Darshan_Paliwal_CV.pdf" // Adjusted path to public directory
+              download="Darshan_Paliwal_CV.pdf"
+              onClick={() => console.log('Download CV clicked')} // Debug log
+              className="bg-gradient-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-all text-shadow-[0_0_8px_rgba(0,255,255,0.3)]" // Reduced glow
             >
               Download CV
             </a>
@@ -61,7 +65,7 @@ function About({ scrollToContact }) {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition relative z-50"
+                  className="hover:text-primary transition relative z-50 text-shadow-[0_0_8px_rgba(0,255,255,0.3)]" // Reduced glow
                 >
                   <Icon />
                 </a>
@@ -80,7 +84,7 @@ function About({ scrollToContact }) {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="md:w-1/2"
         >
-          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-400 text-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
+          <h3 className="text-lg md:text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-400 text-shadow-[0_0_12px_rgba(0,255,255,0.4)]"> {/* Reduced glow */}
             Skills
           </h3>
 
@@ -88,8 +92,8 @@ function About({ scrollToContact }) {
             {['React', 'Tailwind CSS', 'Node.js', 'Framer Motion', 'JavaScript', 'Git'].map((skill) => (
               <motion.li
                 key={skill}
-                className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm text-shadow-[0_0_8px_rgba(0,255,255,0.2)]"
-                whileHover={{ scale: 1.1, textShadow: '0 0 12px rgba(0,255,255,0.4)' }}
+                className="bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full text-sm text-shadow-[0_0_6px_rgba(0,255,255,0.2)]" // Reduced glow
+                whileHover={{ scale: 1.1, textShadow: '0 0 10px rgba(0,255,255,0.3)' }} // Adjusted hover glow
               >
                 {skill}
               </motion.li>
