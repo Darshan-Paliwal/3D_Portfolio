@@ -16,7 +16,10 @@ function App() {
   const scrollToContact = () => {
     console.log('scrollToContact called'); // Debug log
     if (contactRef.current) {
-      contactRef.current.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        contactRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        console.log('Scroll initiated to contact section');
+      }, 100); // Small delay to ensure ref is ready
     } else {
       console.log('contactRef is null'); // Debug log if ref not set
     }
